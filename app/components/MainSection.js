@@ -66,6 +66,7 @@ export default class MainSection extends Component {
   }
 
   render() {
+    
     const { todos, actions } = this.props;
     const { filter } = this.state;
 
@@ -75,7 +76,10 @@ export default class MainSection extends Component {
       0
     );
 
+    const bookmarks = chrome.bookmarks.getTree((results)=>{console.log(results)})
+
     return (
+
       <section className={style.main}>
         {this.renderToggleAll(completedCount)}
         <ul className={style.todoList}>
