@@ -65,6 +65,19 @@ export default class MainSection extends Component {
     }
   }
 
+  retrieveDirectories(){
+    let dirArray = [];
+    const tree = chrome.bookmarks.getTree(results => {
+      for(let entry of results){
+        if(typeof entry.children === 'object'){
+          dirArray.push(entry.title)
+        }
+      }
+
+    })
+    return dirArray
+  }
+
   render() {
     
     const { todos, actions } = this.props;
@@ -76,7 +89,7 @@ export default class MainSection extends Component {
       0
     );
 
-    const bookmarks = chrome.bookmarks.getTree((results)=>{console.log(results)})
+   const bookmarks = console.log(this.retrieveDirectories())
 
     return (
 
